@@ -1,0 +1,482 @@
+@charset "UTF-8";
+* {
+  font-family: "Plus Jakarta Sans";
+}
+
+body {
+  background-color: #F6F7F9;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+}
+.grid .row {
+  flex: 1;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+main {
+  padding: 1em 4em;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.white-background {
+  background-color: white;
+  padding: 1em 2em;
+  border-radius: 10px;
+}
+
+.accent-color {
+  color: #90A3BF;
+}
+
+.button-primary {
+  background-color: #3563e9 !important;
+  color: white !important;
+  border-radius: 4px;
+  padding: 10px 20px;
+  max-width: fit-content;
+  text-decoration: none;
+}
+
+.succes-message {
+  background-color: #cdffcd;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+}
+
+.message {
+  background-color: #f2a237;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.modal-actions a {
+  cursor: pointer;
+}
+
+.button-secondary {
+  background-color: #e0e0e0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background-color: #ccc;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.stars {
+  font-size: 1.5rem;
+  color: #e5e7eb;
+  font-family: sans-serif;
+}
+
+.stars::before {
+  content: "★★★★★";
+}
+
+.stars.stars-1::before {
+  content: "★☆☆☆☆";
+  color: #facc15;
+}
+
+.stars.stars-2::before {
+  content: "★★☆☆☆";
+  color: #facc15;
+}
+
+.stars.stars-3::before {
+  content: "★★★☆☆";
+  color: #facc15;
+}
+
+.stars.stars-4::before {
+  content: "★★★★☆";
+  color: #facc15;
+}
+
+.stars.stars-5::before {
+  content: "★★★★★";
+  color: #facc15;
+}
+
+.advertorials {
+  padding: 1em 4em 0 4em;
+  display: flex;
+  gap: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.advertorial {
+  flex: 1;
+  background-color: #54A6FF;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.advertorial h2 {
+  color: white;
+  max-width: 50%;
+  /* The Best Platform for Car Rental */
+  font-weight: 400;
+  line-height: 150%; /* or 48px */
+  letter-spacing: -0.03em; /* Primary/0 */
+  color: #FFFFFF; /* Inside auto layout */
+  margin: 0;
+}
+.advertorial p {
+  color: white;
+  max-width: 50%;
+}
+.advertorial img {
+  max-width: 75%;
+  margin: 0 auto;
+}
+.advertorial .background-header-element {
+  position: absolute;
+  z-index: 0;
+}
+
+footer {
+  background-color: white;
+  display: flex;
+  padding: 2em 4em;
+}
+footer .brand {
+  flex: 1;
+}
+footer .footer-links {
+  flex: 1;
+  display: flex;
+  gap: 3em;
+  justify-content: flex-end;
+}
+footer .footer-links .links {
+  display: flex;
+  flex-direction: column;
+}
+footer .footer-links .links h3 {
+  font-weight: bold;
+}
+footer .footer-links .links ul {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+footer .footer-links .links ul a {
+  text-decoration: none;
+  color: #90A3BF;
+}
+
+.legal-footer {
+  display: flex;
+  padding: 2em 4em;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-top: 1px solid rgba(19, 19, 19, 0.16);
+}
+.legal-footer .legal-links ul {
+  display: flex;
+  gap: 1em;
+  list-style: none;
+}
+.legal-footer .legal-links ul a {
+  text-decoration: none;
+  color: black;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 0 auto;
+  background-color: white;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.topbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+.topbar .logo a {
+  display: inline-block;
+  color: #3563e9;
+  font-size: 2em;
+  text-decoration: none;
+  /* Logo */
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* or 48px */
+  align-items: center;
+  letter-spacing: -0.03em;
+}
+.topbar .logo a img {
+  width: 40px;
+  height: auto;
+}
+.topbar form {
+  position: relative;
+  flex: 2;
+  min-width: auto;
+}
+.topbar form input[type=search] {
+  padding: 10px 40px 10px 40px; /* ruimte voor icoon links */
+  width: 80%;
+  border: 1px solid #C3D4E9;
+  border-radius: 70px;
+  font-size: 14px;
+  min-width: 200px;
+  transition: all 0.2s ease-in-out;
+}
+.topbar form input[type=search]:focus {
+  outline: none;
+  border-color: #3563e9;
+  box-shadow: 0 0 0 2px rgba(53, 99, 233, 0.2);
+}
+.topbar form img {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+.topbar nav ul {
+  display: flex;
+  gap: 1em;
+  list-style: none;
+  padding-left: 0;
+}
+.topbar nav ul a {
+  text-decoration: none;
+  color: #7ca6c3;
+}
+.topbar .menu {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.topbar .menu .account {
+  color: white;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+}
+.topbar .menu .account img {
+  cursor: pointer;
+  border-radius: 999px;
+  width: 40px;
+  height: 40px;
+}
+.topbar .menu .account .account-dropdown {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 180px;
+}
+.topbar .menu .account .account-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.topbar .menu .account .account-dropdown ul li {
+  display: flex;
+  align-items: center;
+}
+.topbar .menu .account .account-dropdown ul li img {
+  max-height: 24px;
+}
+.topbar .menu .account .account-dropdown ul li a {
+  display: block;
+  padding: 0.75rem 1.25rem 0.75rem 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+.topbar .menu .account .account-dropdown ul li a:hover {
+  background-color: #f5f5f5;
+}
+.topbar .menu .account.active .account-dropdown {
+  display: block;
+}
+
+.car-detail .grid {
+  gap: 50px;
+}
+.car-detail .grid .car-type .row {
+  display: flex;
+  justify-content: space-between;
+}
+.car-detail .call-to-action {
+  display: flex;
+  padding-top: 5em;
+}
+.car-detail .call-to-action .row {
+  justify-content: left !important;
+  align-items: center;
+}
+.car-detail .call-to-action .row:last-of-type {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.section-title {
+  font-size: 1em;
+  color: #90A3BF;
+}
+
+.cars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  gap: 20px;
+}
+.cars .car-details {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 24px;
+  gap: 24px;
+}
+.cars .car-details h3 {
+  margin: 0;
+}
+.cars .car-details .car-type {
+  color: #90A3BF;
+}
+.cars img {
+  max-height: 87px;
+}
+.cars .car-specification {
+  display: flex;
+  justify-content: space-between;
+}
+.cars .car-specification span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #90A3BF;
+}
+.cars .rent-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.show-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.account-form {
+  margin: 0 auto;
+  padding: 2em;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+.account-form input {
+  background-color: #F6F7F9;
+  border: none;
+  margin-bottom: 24px;
+  padding: 1em 2em;
+  border-radius: 10px;
+}
+.account-form label {
+  margin-bottom: 1em;
+}
+
+/*# sourceMappingURL=main.css.map */
