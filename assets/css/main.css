@@ -204,6 +204,15 @@ main {
   max-width: 75%;
   margin: 0 auto;
 }
+
+.advertorial img[src*='waggiebedrijf.png'] {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 50%;
+  margin: 0;
+  z-index: 1;
+}
 .advertorial .background-header-element {
   position: absolute;
   z-index: 0;

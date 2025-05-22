@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+require_once __DIR__ . "/../database/connection.php";
+require_once __DIR__ . "/auth.php";
+
+// Check authentication status
+checkAuth();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +14,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rydr</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/account.css">
+    <link rel="stylesheet" href="assets/css/search.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.ico" sizes="32x32">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +29,11 @@
             Rydr.
         </a>
     </div>
-    <form action="">
-        <input type="search" name="" id="" placeholder="Welke auto wilt u huren?">
-        <img src="assets/images/icons/search-normal.svg" alt="" class="search-icon">
+    <form action="/actions/search.php" method="GET" class="search-form">
+        <input type="search" name="q" id="search" placeholder="Welke auto wilt u huren? (merk, model, type)" required>
+        <button type="submit" class="search-button">
+            <img src="assets/images/icons/search-normal.svg" alt="Zoeken" class="search-icon">
+        </button>
     </form>
     <nav>
         <ul>
@@ -32,12 +43,12 @@
         </ul>
     </nav>
     <div class="menu">
-        <?php if(isset($_SESSION['id'])){ ?>
+        <?php if(isset($_SESSION['user_id'])){ ?>
         <div class="account">
             <img src="assets/images/profil.png" alt="">
             <div class="account-dropdown">
                 <ul>
-                    <li><img src="assets/images/icons/setting.svg" alt=""><a href="#">Naar account</a></li>
+                    <li><img src="assets/images/icons/setting.svg" alt=""><a href="/account">Naar account</a></li>
                     <li><img src="assets/images/icons/logout.svg" alt=""><a href="/logout">Uitloggen</a></li>
                 </ul>
             </div>
