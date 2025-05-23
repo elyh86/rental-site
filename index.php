@@ -9,8 +9,8 @@
  * dan zoekt dit bestand in de 'pages'-folder het bestand auto-huren.php.
  *
  * Waarom doen we dit?
- *  - We krijgen er mooiere URL’s door (auto-huren in plaats van auto-huren.php).
- *  - We kunnen hier één keer logica schrijven voor “wat als de pagina niet bestaat”.
+ *  - We krijgen er mooiere URL's door (auto-huren in plaats van auto-huren.php).
+ *  - We kunnen hier één keer logica schrijven voor "wat als de pagina niet bestaat".
  *  - (Buiten het niveau van dit project) We kunnen ook hier logica toevoegen
  *    om te controleren of iemand is ingelogd, in plaats van dat per pagina te herhalen.
  *
@@ -35,6 +35,31 @@ if ($path === 'login-handler') {
 
 if ($path === 'register-handler') {
     require_once __DIR__ . '/actions/register.php';
+    exit;
+}
+
+if ($path === 'change-password-handler') {
+    require_once __DIR__ . '/actions/change-password.php';
+    exit;
+}
+
+if ($path === 'search-handler') {
+    require_once __DIR__ . '/actions/search.php';
+    exit;
+}
+
+if ($path === 'update-user-handler') {
+    require_once __DIR__ . '/actions/update-user.php';
+    exit;
+}
+
+if ($path === 'login-form') {
+    require_once __DIR__ . '/pages/login-form.php';
+    exit;
+}
+
+if ($path === 'register-form') {
+    require_once __DIR__ . '/pages/register-form.php';
     exit;
 }
 

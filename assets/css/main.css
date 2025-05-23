@@ -272,14 +272,17 @@ footer .footer-links .links ul a {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 10;
   margin: 0 auto;
-  background-color: white;
-  padding: 1rem 4rem;
+  background: #fff;
+  padding: 1.2rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 24px rgba(53,99,233,0.10), 0 1.5px 0 #e5e7eb;
+  border-radius: 0 0 18px 18px;
+  min-height: 70px;
+  transition: box-shadow 0.2s;
 }
 .topbar .logo {
   display: flex;
@@ -288,65 +291,85 @@ footer .footer-links .links ul a {
   flex: 1;
 }
 .topbar .logo a {
-  display: inline-block;
   color: #3563e9;
-  font-size: 2em;
+  font-size: 2.2em;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   text-decoration: none;
-  /* Logo */
-  font-family: "Plus Jakarta Sans";
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* or 48px */
-  align-items: center;
-  letter-spacing: -0.03em;
+  padding: 0.2em 0.5em;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
-.topbar .logo a img {
-  width: 40px;
-  height: auto;
-}
-.topbar form {
-  position: relative;
-  flex: 2;
-  min-width: auto;
-}
-.topbar form input[type=search] {
-  padding: 10px 40px 10px 40px; /* ruimte voor icoon links */
-  width: 80%;
-  border: 1px solid #C3D4E9;
-  border-radius: 70px;
-  font-size: 14px;
-  min-width: 200px;
-  transition: all 0.2s ease-in-out;
-}
-.topbar form input[type=search]:focus {
-  outline: none;
-  border-color: #3563e9;
-  box-shadow: 0 0 0 2px rgba(53, 99, 233, 0.2);
-}
-.topbar form img {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
+.topbar .logo a:hover {
+  background: #f6f7f9;
 }
 .topbar nav ul {
   display: flex;
-  gap: 1em;
+  gap: 1.5em;
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 .topbar nav ul a {
   text-decoration: none;
   color: #7ca6c3;
+  font-weight: 600;
+  font-size: 1.08em;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.topbar nav ul a:hover {
+  background: #e0e7ff;
+  color: #3563e9;
+}
+.topbar form {
+  position: relative;
+  flex: 2;
+  min-width: 220px;
+  margin: 0 2em;
+}
+.topbar form input[type=search] {
+  padding: 12px 44px 12px 44px;
+  width: 100%;
+  border: 1.5px solid #C3D4E9;
+  border-radius: 40px;
+  font-size: 1em;
+  background: #f6f7f9;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.topbar form input[type=search]:focus {
+  outline: none;
+  border-color: #3563e9;
+  box-shadow: 0 0 0 2px rgba(53, 99, 233, 0.10);
+}
+.topbar form img {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  opacity: 0.7;
 }
 .topbar .menu {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 1.5em;
+}
+.topbar .menu .account img {
+  border-radius: 999px;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #e0e7ff;
+  box-shadow: 0 2px 8px rgba(53,99,233,0.08);
+  transition: border 0.2s;
+}
+.topbar .menu .account img:hover {
+  border: 2px solid #3563e9;
 }
 .topbar .menu .account {
   color: white;
@@ -356,23 +379,19 @@ footer .footer-links .links ul a {
   transition: background-color 0.2s;
   position: relative;
 }
-.topbar .menu .account img {
-  cursor: pointer;
-  border-radius: 999px;
-  width: 40px;
-  height: 40px;
-}
 .topbar .menu .account .account-dropdown {
   display: none;
   position: absolute;
   top: 110%;
   right: 0;
-  background-color: white;
+  background-color: #fff;
   border: 1px solid #e1e1e1;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(53,99,233,0.10);
   z-index: 10;
-  min-width: 180px;
+  min-width: 210px;
+  padding: 0.5rem 0;
+  transition: box-shadow 0.2s;
 }
 .topbar .menu .account .account-dropdown ul {
   list-style: none;
@@ -382,19 +401,26 @@ footer .footer-links .links ul a {
 .topbar .menu .account .account-dropdown ul li {
   display: flex;
   align-items: center;
+  gap: 0.75em;
+  padding: 0.5em 1.5em;
+  transition: background 0.15s;
+  border-radius: 8px;
+}
+.topbar .menu .account .account-dropdown ul li:hover {
+  background: #f6f7f9;
 }
 .topbar .menu .account .account-dropdown ul li img {
-  max-height: 24px;
+  max-height: 22px;
+  opacity: 0.8;
 }
 .topbar .menu .account .account-dropdown ul li a {
   display: block;
-  padding: 0.75rem 1.25rem 0.75rem 0;
+  padding: 0.5em 0;
   text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
-.topbar .menu .account .account-dropdown ul li a:hover {
-  background-color: #f5f5f5;
+  color: #222;
+  font-size: 15px;
+  font-weight: 500;
+  width: 100%;
 }
 .topbar .menu .account.active .account-dropdown {
   display: block;
@@ -490,7 +516,7 @@ footer .footer-links .links ul a {
 
 .car-image {
   width: 100%;
-  height: 140px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -502,7 +528,7 @@ footer .footer-links .links ul a {
 .car-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain !important;
   border-radius: 10px;
   background: #f6f7f9;
   display: block;
@@ -516,6 +542,14 @@ footer .footer-links .links ul a {
   max-width: 350px;
   display: inline-block;
   vertical-align: top;
+}
+.car-card img {
+  object-fit: contain !important;
+  width: 100%;
+  height: 180px;
+  background: #f6f7f9;
+  border-radius: 10px;
+  display: block;
 }
 .cars-grid {
   display: flex;
@@ -733,6 +767,12 @@ footer .footer-links .links ul a {
 .unavailable {
   background: #ffd6d6;
   color: #c00;
+}
+
+.car-detail .advertorial {
+  max-height: 300px;
+  min-height: 180px;
+  overflow: auto;
 }
 
 /*# sourceMappingURL=main.css.map */

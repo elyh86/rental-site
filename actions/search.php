@@ -43,23 +43,15 @@ if (isset($_GET['q'])) {
 ?>
 <link rel="stylesheet" href="/assets/css/search.css">
 
-<main class="search-results">
-    <div class="search-form-container">
-        <form action="/actions/search.php" method="GET" class="search-form">
-            <input type="search" name="q" placeholder="Zoek op merk, model of type..." value="<?= htmlspecialchars($search) ?>">
-            <button type="submit" class="search-button">
-                <img src="/assets/images/icons/search.svg" alt="Zoeken" class="search-icon">
-            </button>
-        </form>
-    </div>
-    <h2 class="section-title">Zoekresultaten voor "<?= htmlspecialchars($search) ?>"</h2>
+<main class="search-results" style="max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 16px rgba(53,99,233,0.08); padding: 2rem 2.5rem;">
+    <h2 class="section-title" style="font-size:2rem; color:#3563e9; margin-bottom:1.5rem;">Zoekresultaten voor "<?= htmlspecialchars($search) ?>"</h2>
     <?php if (!empty($error)): ?>
         <div class="error-container">
             <p><?= htmlspecialchars($error) ?></p>
             <a href="/" class="button-primary">Terug naar home</a>
         </div>
     <?php elseif (count($cars) > 0): ?>
-        <p class="results-count"><?= count($cars) ?> auto's gevonden</p>
+        <p class="results-count" style="color:#7ca6c3; margin-bottom:1.5rem;"><?= count($cars) ?> auto's gevonden</p>
         <div class="cars-grid">
             <?php foreach ($cars as $car): ?>
                 <div class="car-card">

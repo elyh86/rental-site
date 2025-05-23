@@ -38,7 +38,7 @@ checkAuth();
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/pages/ons-aanbod.php">Ons aanbod</a></li>
+            <li><a href="/ons-aanbod">Ons aanbod</a></li>
             <li><a href="#">Hulp nodig?</a></li>
         </ul>
     </nav>
@@ -54,8 +54,8 @@ checkAuth();
             </div>
         </div>
         <?php }else{ ?>
-            <a href="/pages/login-form.php" class="button-secondary">Inloggen</a>
-            <a href="/pages/register-form.php" class="button-primary">Registreren</a>
+            <a href="/login-form" class="button-secondary">Inloggen</a>
+            <a href="/register-form" class="button-primary">Registreren</a>
         <?php } ?>
 
     </div>

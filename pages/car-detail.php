@@ -1,51 +1,66 @@
 <?php require "includes/header.php" ?>
 
 <?php
-//TODO: Implementeer dat de pagina de juiste auto laat zien op basis van de query paramater 'name'
-//$name = $_GET['name'] ?? null;
+require_once __DIR__ . '/../database/connection.php';
 
-//if ($name) {
-//    echo "Toon details van auto met naam: " . htmlspecialchars($name);
-//} else {
-//    echo "Geen auto opgegeven.";
-//}
+$car = null;
+$error = '';
 
+// Get car id from query parameter
+$id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-
+if ($id) {
+    $stmt = $conn->prepare("SELECT * FROM cars WHERE id = ?");
+    $stmt->execute([$id]);
+    $car = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$car) {
+        $error = 'Auto niet gevonden.';
+    }
+} else {
+    $error = 'Geen auto opgegeven.';
+}
 ?>
 <main class="car-detail">
     <div class="grid">
+        <?php if ($error): ?>
+            <div class="row">
+                <div class="advertorial">
+                    <h2><?= htmlspecialchars($error) ?></h2>
+                    <a href="/ons-aanbod" class="button-primary">Terug naar aanbod</a>
+                </div>
+            </div>
+        <?php else: ?>
         <div class="row">
             <div class="advertorial">
-                <h2>Sport auto met het beste design en snelheid</h2>
-                <p>Veiligheid en comfort terwijl je rijd in een futiristische en elante auto </p>
-                <img src="assets/images/car-rent-header-image-1.png" alt="">
+                <h2><?= htmlspecialchars($car['brand']) ?> <?= htmlspecialchars($car['model']) ?></h2>
+                <p><?= htmlspecialchars($car['description']) ?></p>
+                <img src="/<?= htmlspecialchars($car['image_url']) ?>" alt="<?= htmlspecialchars($car['brand']) ?>">
                 <img src="assets/images/header-circle-background.svg" alt="" class="background-header-element">
             </div>
         </div>
         <div class="row white-background">
-            <h2>Nissan GT-R</h2>
+            <h2><?= htmlspecialchars($car['brand']) ?> <?= htmlspecialchars($car['model']) ?></h2>
             <div class="rating">
                 <span class="stars stars-4"></span>
                 <span>440+ reviewers</span>
             </div>
-            <p>NISMO is het toonbeeld geworden van Nissan's uitzonderlijke prestaties, geïnspireerd door het meest meedogenloze testterrein: het circuit.</p>
+            <p><?= htmlspecialchars($car['description']) ?></p>
             <div class="car-type">
                 <div class="grid">
-                    <div class="row"><span class="accent-color">Type Car</span><span>Sport</span></div>
-                    <div class="row"><span class="accent-color">Capacity</span><span>2 person</span></div>
+                    <div class="row"><span class="accent-color">Type Car</span><span><?= htmlspecialchars($car['category']) ?></span></div>
+                    <div class="row"><span class="accent-color">Capacity</span><span><?= htmlspecialchars($car['capacity']) ?></span></div>
                 </div>
                 <div class="grid">
-                    <div class="row"><span class="accent-color">Steering</span><span>Manual</span></div>
-                    <div class="row"><span class="accent-color">Gasoline</span><span>70L</span></div>
+                    <div class="row"><span class="accent-color">Steering</span><span><?= htmlspecialchars($car['transmission']) ?></span></div>
+                    <div class="row"><span class="accent-color">Gasoline</span><span><?= htmlspecialchars($car['fuel_capacity']) ?></span></div>
                 </div>
                 <div class="call-to-action">
-                    <div class="row"><span class="font-weight-bold">€80,00</span> / dag</div>
-                    <div class="row"><a href="" class="button-primary">Huur nu</a></div>
+                    <div class="row"><span class="font-weight-bold">€<?= number_format($car['price'], 2, ',', '.') ?></span> / dag</div>
+                    <div class="row"><a href="#" class="button-primary">Huur nu</a></div>
                 </div>
-
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </main>
 
