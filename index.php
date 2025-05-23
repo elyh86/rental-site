@@ -63,6 +63,26 @@ if ($path === 'register-form') {
     exit;
 }
 
+if ($path === 'mijn-huurautos') {
+    require_once __DIR__ . '/pages/mijn-huurautos.php';
+    exit;
+}
+
+if ($path === 'huur-auto') {
+    require_once __DIR__ . '/pages/huur-auto.php';
+    exit;
+}
+
+if ($path === 'hulp-nodig') {
+    require_once __DIR__ . '/pages/hulp-nodig.php';
+    exit;
+}
+
+if ($path === 'over-ons') {
+    require_once __DIR__ . '/pages/over-ons.php';
+    exit;
+}
+
 $page = $path ?: 'home';
 $file = __DIR__ . '/pages/' . $page . '.php';
 

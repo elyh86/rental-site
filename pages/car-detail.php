@@ -19,6 +19,14 @@ if ($id) {
 } else {
     $error = 'Geen auto opgegeven.';
 }
+
+// Check of de auto nu verhuurd is
+$isRented = false;
+if ($car) {
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM rentals WHERE car_id = :car_id AND start_date <= CURDATE() AND end_date >= CURDATE()");
+    $stmt->execute([':car_id' => $car['id']]);
+    $isRented = $stmt->fetchColumn() > 0;
+}
 ?>
 <main class="car-detail">
     <div class="grid">
@@ -56,7 +64,13 @@ if ($id) {
                 </div>
                 <div class="call-to-action">
                     <div class="row"><span class="font-weight-bold">€<?= number_format($car['price'], 2, ',', '.') ?></span> / dag</div>
-                    <div class="row"><a href="#" class="button-primary">Huur nu</a></div>
+                    <div class="row">
+                        <?php if ($isRented): ?>
+                            <a href="#" class="button-primary huur-disabled" tabindex="-1" aria-disabled="true" style="pointer-events:none;opacity:0.5;">Niet beschikbaar</a>
+                        <?php else: ?>
+                            <a href="#" class="button-primary" data-huur-auto-id="<?= $car['id'] ?>">Huur nu</a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>

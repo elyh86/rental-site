@@ -21,6 +21,7 @@ checkAuth();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script>window.isLoggedIn = <?= isset($_SESSION['user_id']) ? 'true' : 'false' ?>;</script>
 </head>
 <body>
 <div class="topbar">
@@ -39,7 +40,7 @@ checkAuth();
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/ons-aanbod">Ons aanbod</a></li>
-            <li><a href="#">Hulp nodig?</a></li>
+            <li><a href="/hulp-nodig">Hulp nodig?</a></li>
         </ul>
     </nav>
     <div class="menu">
@@ -49,6 +50,7 @@ checkAuth();
             <div class="account-dropdown">
                 <ul>
                     <li><img src="assets/images/icons/setting.svg" alt=""><a href="/account">Naar account</a></li>
+                    <li><img src="assets/images/icons/car.svg" alt=""><a href="/mijn-huurautos">Mijn gehuurde auto's</a></li>
                     <li><img src="assets/images/icons/logout.svg" alt=""><a href="/logout">Uitloggen</a></li>
                 </ul>
             </div>

@@ -16,9 +16,11 @@ if (accountImage) {
 const startButton = document.querySelector('.button-primary');
 if (startButton) {
     startButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        const modal = document.getElementById('loginModal');
-        if (modal) modal.classList.remove('hidden');
+        if (window.isLoggedIn === false || window.isLoggedIn === 'false') {
+            e.preventDefault();
+            const modal = document.getElementById('loginModal');
+            if (modal) modal.classList.remove('hidden');
+        }
     });
 }
 
@@ -38,3 +40,16 @@ if (modal) {
         }
     });
 }
+
+// Huur nu knop: als ingelogd, ga naar huur-auto pagina
+const huurKnoppen = document.querySelectorAll('.button-primary[data-huur-auto-id]');
+huurKnoppen.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+        if (window.isLoggedIn === true || window.isLoggedIn === 'true') {
+            e.preventDefault();
+            const carId = btn.getAttribute('data-huur-auto-id');
+            window.location.href = '/huur-auto?id=' + encodeURIComponent(carId);
+        }
+        // Anders: popup wordt al getoond door bestaande code
+    });
+});

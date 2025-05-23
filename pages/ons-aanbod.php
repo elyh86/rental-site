@@ -115,11 +115,18 @@ foreach ($cars as $car) {
             <h2 class="category-title"><?= htmlspecialchars($category) ?></h2>
             <div class="cars-grid">
                 <?php foreach ($carsByCategory[$category] as $car): ?>
-                    <div class="car-card">
+                    <?php
+                    // Check of de auto nu verhuurd is
+                    $stmt = $conn->prepare("SELECT COUNT(*) FROM rentals WHERE car_id = :car_id AND start_date <= CURDATE() AND end_date >= CURDATE()");
+                    $stmt->execute([':car_id' => $car['id']]);
+                    $isRented = $stmt->fetchColumn() > 0;
+                    ?>
+                    <div class="car-card<?= $isRented ? ' car-unavailable' : '' ?>">
                         <div class="car-image">
-                            <img src="/<?php echo ltrim(htmlspecialchars($car['image_url']), '/'); ?>" 
-                                 alt="<?= htmlspecialchars($car['brand']) ?>">
-                            <?php if ($car['is_available']): ?>
+                            <img src="/<?= ltrim(htmlspecialchars($car['image_url']), '/') ?>" alt="<?= htmlspecialchars($car['brand']) ?>">
+                            <?php if ($isRented): ?>
+                                <span class="availability unavailable">Niet beschikbaar</span>
+                            <?php elseif ($car['is_available']): ?>
                                 <span class="availability available">Beschikbaar</span>
                             <?php else: ?>
                                 <span class="availability unavailable">Niet beschikbaar</span>
@@ -144,13 +151,22 @@ foreach ($cars as $car) {
                                 <?php endif; ?>
                             </div>
                             <div class="car-price">
-                                <span class="price">€<?= number_format($car['price'], 2, ',', '.') ?></span>
+                                <span class="price<?= $isRented ? ' price-unavailable' : '' ?>">€<?= number_format($car['price'], 2, ',', '.') ?></span>
                                 <span class="period">per dag</span>
-                                <?php if (isset($car['weekly_price'])): ?>
+                                <?php if ($isRented): ?>
+                                    <span class="not-available-text">Niet beschikbaar</span>
+                                <?php elseif (isset($car['weekly_price'])): ?>
                                     <span class="weekly-price">€<?= number_format($car['weekly_price'], 2, ',', '.') ?> per week</span>
                                 <?php endif; ?>
                             </div>
-                            <a href="/car-detail?id=<?= $car['id'] ?>" class="button-primary">Bekijk details</a>
+                            <div class="car-actions">
+                                <a href="/car-detail?id=<?= $car['id'] ?>" class="button-primary">Bekijk details</a>
+                                <?php if ($isRented): ?>
+                                    <a href="#" class="button-primary huur-disabled" tabindex="-1" aria-disabled="true" style="pointer-events:none;opacity:0.5;">Huur nu</a>
+                                <?php else: ?>
+                                    <a href="#" class="button-primary" data-huur-auto-id="<?= $car['id'] ?>">Huur nu</a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
