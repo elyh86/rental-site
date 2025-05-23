@@ -1,0 +1,312 @@
+.our-offer-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .page-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #333;
+        font-weight: 700;
+    }
+
+    .filters-container {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+
+        .filters-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            align-items: end;
+
+            .filter-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                label {
+                    font-weight: 600;
+                    color: #333;
+                }
+
+                .price-range {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    input {
+                        width: 100%;
+                        padding: 0.5rem;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                        font-size: 0.9rem;
+
+                        &:focus {
+                            border-color: #333;
+                            outline: none;
+                        }
+                    }
+
+                    span {
+                        color: #666;
+                    }
+                }
+
+                select {
+                    padding: 0.5rem;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 0.9rem;
+                    background-color: white;
+                    cursor: pointer;
+
+                    &:focus {
+                        border-color: #333;
+                        outline: none;
+                    }
+                }
+            }
+
+            .button-primary, .button-secondary {
+                padding: 0.75rem 1.5rem;
+                border-radius: 4px;
+                font-weight: 600;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .button-secondary {
+                background-color: #f8f9fa;
+                color: #333;
+                border: 2px solid #333;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: #333;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .category-filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .category-filter {
+            padding: 0.75rem 1.5rem;
+            background-color: #f8f9fa;
+            border: 2px solid #333;
+            border-radius: 4px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+
+            &:hover, &:focus {
+                background-color: #333;
+                color: white;
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    .category-section {
+        margin-bottom: 4rem;
+        scroll-margin-top: 2rem;
+
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+            color: #333;
+            font-weight: 700;
+        }
+    }
+
+    .cars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .car-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .availability {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: 0.9rem;
+
+                &.available {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                &.unavailable {
+                    background-color: #f44336;
+                    color: white;
+                }
+            }
+        }
+
+        .car-info {
+            padding: 1.5rem;
+
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+                color: #333;
+                font-weight: 700;
+            }
+
+            .car-description {
+                color: #666;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+
+            .car-specs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-bottom: 1rem;
+                color: #666;
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    font-size: 0.9rem;
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        opacity: 0.7;
+                    }
+                }
+            }
+
+            .car-features {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 1rem;
+
+                .feature-tag {
+                    background-color: #f8f9fa;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.8rem;
+                    color: #666;
+                }
+            }
+
+            .car-price {
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+                background-color: #f8f9fa;
+                border-radius: 4px;
+                
+                .price {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #333;
+                }
+
+                .period {
+                    color: #666;
+                    margin-left: 0.5rem;
+                    font-size: 0.9rem;
+                }
+
+                .weekly-price {
+                    display: block;
+                    margin-top: 0.5rem;
+                    color: #666;
+                    font-size: 0.9rem;
+                }
+            }
+
+            .button-primary {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+                font-weight: 600;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-2px);
+                }
+            }
+        }
+    }
+}
+
+// Responsive aanpassingen
+@media (max-width: 768px) {
+    .our-offer-page {
+        padding: 1rem;
+
+        .filters-container {
+            .filters-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cars-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .category-filters {
+            padding: 0.5rem;
+            
+            .category-filter {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    }
+} 

@@ -13,10 +13,10 @@ checkAuth();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rydr</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/auth.css">
-    <link rel="stylesheet" href="assets/css/account.css">
-    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/auth.css">
+    <link rel="stylesheet" href="/assets/css/account.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.ico" sizes="32x32">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@ checkAuth();
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/ons-aanbod">Ons aanbod</a></li>
+            <li><a href="/pages/ons-aanbod.php">Ons aanbod</a></li>
             <li><a href="#">Hulp nodig?</a></li>
         </ul>
     </nav>
@@ -54,7 +54,8 @@ checkAuth();
             </div>
         </div>
         <?php }else{ ?>
-            <a href="" class="button-primary">Start met huren</a>
+            <a href="/pages/login-form.php" class="button-secondary">Inloggen</a>
+            <a href="/pages/register-form.php" class="button-primary">Registreren</a>
         <?php } ?>
 
     </div>
