@@ -1,0 +1,10 @@
+# Enable the rewrite engine
+RewriteEngine On
+
+# If the requested file or directory exists, serve it as-is
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise, redirect to index.php
+RewriteRule ^ index.php [L]
