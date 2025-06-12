@@ -95,6 +95,24 @@ INSERT INTO `cars` (`id`, `brand`, `model`, `type`, `category`, `image_url`, `de
 (20, 'Fiat', 'Ducato', 'business', 'Transport', 'assets/images/bedrijfswagens/bedrijfswagen7.jpg', 'De Fiat Ducato is een grote bedrijfswagen met een laadvolume tot 17m³ en een payload tot 2.200 kg. De MultiJet-motoren bieden een uitstekende combinatie van kracht en zuinigheid voor zwaar transport.', '3 Personen', 'Schakel', '90l', 99.00, NULL, 1, '2025-05-16 12:00:54', '2025-05-16 12:00:54'),
 (21, 'Iveco', 'Daily', 'business', 'Transport', 'assets/images/bedrijfswagens/bedrijfswagen8.jpg', 'De Iveco Daily onderscheidt zich door zijn robuuste constructie en veelzijdigheid. Met een laadvolume tot 19,6m³ en een trekvermogen tot 3.500 kg is geen enkele taak te groot. De geavanceerde connectiviteitsfuncties maken wagenparkbeheer eenvoudig.', '3 Personen', 'Schakel', '100l', 105.00, NULL, 1, '2025-05-16 12:00:54', '2025-05-16 12:00:54');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `remember_tokens`
+--
+
+CREATE TABLE `remember_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expires` datetime NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `token` (`token`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -112,6 +130,12 @@ ALTER TABLE `account`
 ALTER TABLE `cars`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_car_type` (`type`);
+
+--
+-- Indexes for table `remember_tokens`
+--
+ALTER TABLE `remember_tokens`
+  ADD CONSTRAINT `remember_tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

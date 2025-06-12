@@ -57,11 +57,7 @@ if (isset($_GET['q'])) {
                 <div class="car-card">
                     <div class="car-image">
                         <img src="/<?php echo ltrim(htmlspecialchars($car['image_url']), '/'); ?>" alt="<?= htmlspecialchars($car['brand']) ?>">
-                        <?php if ($car['is_available']): ?>
-                            <span class="availability available">Beschikbaar</span>
-                        <?php else: ?>
-                            <span class="availability unavailable">Niet beschikbaar</span>
-                        <?php endif; ?>
+                        <span class="availability available">Beschikbaar</span>
                     </div>
                     <div class="car-info">
                         <h3><?= htmlspecialchars($car['brand']) ?></h3>
@@ -81,7 +77,10 @@ if (isset($_GET['q'])) {
                                 <span class="weekly-price">€<?= number_format($car['weekly_price'], 2, ',', '.') ?> per week</span>
                             <?php endif; ?>
                         </div>
-                        <a href="/car-detail?id=<?= $car['id'] ?>" class="button-primary">Bekijk details</a>
+                        <div class="car-actions">
+                            <a href="/car-detail?id=<?= $car['id'] ?>" class="button-primary">Bekijk details</a>
+                            <a href="#" class="button-primary" data-huur-auto-id="<?= $car['id'] ?>">Huur nu</a>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>

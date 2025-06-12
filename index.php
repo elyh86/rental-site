@@ -63,23 +63,23 @@ if ($path === 'register-form') {
     exit;
 }
 
-if ($path === 'mijn-huurautos') {
-    require_once __DIR__ . '/pages/mijn-huurautos.php';
+if ($path === 'my-rented-cars') {
+    require_once __DIR__ . '/pages/my-rented-cars.php';
     exit;
 }
 
-if ($path === 'huur-auto') {
-    require_once __DIR__ . '/pages/huur-auto.php';
+if ($path === 'rent-car') {
+    require_once __DIR__ . '/pages/rent-car.php';
     exit;
 }
 
-if ($path === 'hulp-nodig') {
-    require_once __DIR__ . '/pages/hulp-nodig.php';
+if ($path === 'need-help') {
+    require_once __DIR__ . '/pages/need-help.php';
     exit;
 }
 
-if ($path === 'over-ons') {
-    require_once __DIR__ . '/pages/over-ons.php';
+if ($path === 'about-us') {
+    require_once __DIR__ . '/pages/about-us.php';
     exit;
 }
 

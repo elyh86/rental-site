@@ -49,7 +49,10 @@ huurKnoppen.forEach(function(btn) {
             e.preventDefault();
             const carId = btn.getAttribute('data-huur-auto-id');
             window.location.href = '/huur-auto?id=' + encodeURIComponent(carId);
+        } else {
+            e.preventDefault();
+            const modal = document.getElementById('loginModal');
+            if (modal) modal.classList.remove('hidden');
         }
-        // Anders: popup wordt al getoond door bestaande code
     });
 });

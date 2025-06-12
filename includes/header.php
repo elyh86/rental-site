@@ -39,8 +39,8 @@ checkAuth();
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/ons-aanbod">Ons aanbod</a></li>
-            <li><a href="/hulp-nodig">Hulp nodig?</a></li>
+            <li><a href="/our-offer">Our offer</a></li>
+            <li><a href="/need-help">Need help?</a></li>
         </ul>
     </nav>
     <div class="menu">
@@ -49,15 +49,15 @@ checkAuth();
             <img src="assets/images/profil.png" alt="">
             <div class="account-dropdown">
                 <ul>
-                    <li><img src="assets/images/icons/setting.svg" alt=""><a href="/account">Naar account</a></li>
-                    <li><img src="assets/images/icons/car.svg" alt=""><a href="/mijn-huurautos">Mijn gehuurde auto's</a></li>
-                    <li><img src="assets/images/icons/logout.svg" alt=""><a href="/logout">Uitloggen</a></li>
+                    <li><img src="assets/images/icons/setting.svg" alt=""><a href="/account">To account</a></li>
+                    <li><img src="assets/images/icons/car.svg" alt=""><a href="/my-rented-cars">My rented cars</a></li>
+                    <li><img src="assets/images/icons/logout.svg" alt=""><a href="/logout">Log out</a></li>
                 </ul>
             </div>
         </div>
         <?php }else{ ?>
-            <a href="/login-form" class="button-secondary">Inloggen</a>
-            <a href="/register-form" class="button-primary">Registreren</a>
+            <a href="/login-form" class="button-secondary">Log in</a>
+            <a href="/register-form" class="button-primary">Register</a>
         <?php } ?>
 
     </div>
