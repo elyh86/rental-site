@@ -87,7 +87,7 @@ $transportCar = $stmtTransport->fetch(PDO::FETCH_ASSOC);
         <?php endfor; ?>
     </div>
     <div class="show-more">
-        <a class="button-primary" href="/ons-aanbod">Toon alle</a>
+        <a class="button-primary" href="/our-offer">Toon alle</a>
     </div>
     </main>
 

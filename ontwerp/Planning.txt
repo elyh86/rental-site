@@ -1,0 +1,67 @@
+🗓️ Planning met taken (volgens projectfasen)
+📅 Week 1 – Oriënteren, analyseren en plannen
+Repository clonen en lokaal werkend krijgen
+
+Analyse van de bestaande code
+
+ERD maken van de database
+
+Use case diagram maken
+
+SCRUM-board aanmaken en vullen
+
+Eerste bugs en onduidelijkheden noteren
+
+📅 Week 2 – Optimaliseren, ontwerpen en tests schrijven
+Optimalisaties bedenken voor de site/database
+
+Use case diagram afronden
+
+Testplan schrijven (wat testen we, hoe?)
+
+Wireframes maken (voor nieuwe pagina's of wijzigingen)
+
+Styling checken: voldoet alles aan de huisstijl?
+
+📅 Week 3 – Realiseren (deel 1)
+Overzichtspagina auto's uit database tonen
+
+Detailpagina per auto maken
+
+“Over ons”-pagina bouwen
+
+Alles uit de database halen (geen hardcoded data)
+
+📅 Week 4 – Realiseren (deel 2)
+Filter toevoegen op 'Ons aanbod' (merk, prijs, etc.)
+
+Formulier + logica om auto's toe te voegen aan de database
+
+Extra validaties toevoegen
+
+📅 Week 5 – Realiseren (deel 3)
+Registratiepagina met password_hash()
+
+Login met sessies en foutafhandeling
+
+Kleine stylingverbeteringen
+
+📅 Week 6 – Testen
+Alle functionaliteit testen volgens je testplan
+
+Werkt login, filter, toevoegen auto, enz?
+
+Bugfixes of bugs noteren als ze niet opgelost zijn
+
+Testrapport schrijven
+
+📅 Week 7 – Opleveren en presenteren
+Laatste code controleren en uploaden op GitHub
+
+Screenshot SCRUM-board maken
+
+Website demonstreren
+
+Presentatie voorbereiden
+
+Alles inleveren: GitHub, use case diagram, testrapport

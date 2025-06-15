@@ -28,6 +28,11 @@ if ($path === 'logout') {
     exit;
 }
 
+if ($path === 'our-offer') {
+    require_once __DIR__ . '/pages/our-offer.php';
+    exit;
+}
+
 if ($path === 'login-handler') {
     require_once __DIR__ . '/actions/login.php';
     exit;

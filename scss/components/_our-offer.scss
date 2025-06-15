@@ -1,18 +1,51 @@
+// Variables
+$primary: #3563E9;
+$primary-light: #54A6FF;
+$text-dark: #1A202C;
+$text-light: #90A3BF;
+$gray-bg: #F6F7F9;
+$white: #FFFFFF;
+$border-color: #E5E7EB;
+
 .our-offer {
     padding: 4rem 2rem;
-    background-color: #f8f9fa;
+    background-color: $gray-bg;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 
-    .section-title {
+    .section-header {
         text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
-        color: #333;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        
+        .section-subtitle {
+            color: $primary;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.875rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: $text-dark;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            color: $text-light;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
     }
 
     .offer-categories {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         max-width: 1200px;
         margin: 0 auto;
@@ -20,40 +53,28 @@
     }
 
     .offer-category {
-        background: white;
-        padding: 2.5rem 2rem 2rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 340px;
+        background: $white;
+        border-radius: 18px;
+        padding: 2rem 1.5rem;
+        box-shadow: 0 8px 32px rgba(53, 99, 233, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
 
         &:hover {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(53, 99, 233, 0.15);
         }
 
-        .offer-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f0f2f5;
-            border-radius: 50%;
-        }
-        .offer-icon img {
-            width: 56px;
-            height: 56px;
-            object-fit: contain;
-        }
-
-        h3 {
-            font-size: 1.3rem;
+        .offer-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: $primary;
+            color: $white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             margin-bottom: 0.5rem;
             color: #222;
             font-weight: 700;
