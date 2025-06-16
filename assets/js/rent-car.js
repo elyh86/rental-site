@@ -66,8 +66,39 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Hier zou je normaal gesproken de data naar de server sturen
-        alert('Reservering succesvol geplaatst!');
+        // Voeg de extra's toe aan het formulier
+        const extraInsurance = document.getElementById('extraInsurance');
+        const childSeat = document.getElementById('childSeat');
+        const gps = document.getElementById('gps');
+        const winterTires = document.getElementById('winterTires');
+
+        // Maak verborgen velden voor de extra's
+        const extraInsuranceInput = document.createElement('input');
+        extraInsuranceInput.type = 'hidden';
+        extraInsuranceInput.name = 'extra_insurance';
+        extraInsuranceInput.value = extraInsurance.checked;
+        form.appendChild(extraInsuranceInput);
+
+        const childSeatInput = document.createElement('input');
+        childSeatInput.type = 'hidden';
+        childSeatInput.name = 'child_seat';
+        childSeatInput.value = childSeat.checked;
+        form.appendChild(childSeatInput);
+
+        const gpsInput = document.createElement('input');
+        gpsInput.type = 'hidden';
+        gpsInput.name = 'gps';
+        gpsInput.value = gps.checked;
+        form.appendChild(gpsInput);
+
+        const winterTiresInput = document.createElement('input');
+        winterTiresInput.type = 'hidden';
+        winterTiresInput.name = 'winter_tires';
+        winterTiresInput.value = winterTires.checked;
+        form.appendChild(winterTiresInput);
+
+        // Verstuur het formulier
+        form.submit();
     });
 
     // Extra's prijsberekening

@@ -1,5 +1,21 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
+
+// Haal de auto details op als er een ID is
+$car = null;
+if (isset($_GET['id'])) {
+    $stmt = $conn->prepare("SELECT * FROM cars WHERE id = ?");
+    $stmt->bind_param("i", $_GET['id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $car = $result->fetch_assoc();
+}
+
+// Als er geen auto is gevonden, redirect naar het aanbod
+if (!$car) {
+    header('Location: /our-offer');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +23,7 @@ require_once __DIR__ . '/../config/database.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Huren - Rydr</title>
+    <title>Auto Huren - <?= htmlspecialchars($car['brand'] . ' ' . $car['model']) ?> - Rydr</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -19,10 +35,40 @@ require_once __DIR__ . '/../config/database.php';
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h1 class="text-center mb-5">Auto Huren</h1>
+                <h1 class="text-center mb-5">Auto Huren - <?= htmlspecialchars($car['brand'] . ' ' . $car['model']) ?></h1>
                 
+                <?php if (isset($_GET['error'])): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?= htmlspecialchars($_GET['error']) ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif; ?>
+
                 <div class="rent-car-form">
-                    <form id="rentCarForm" class="needs-validation" novalidate>
+                    <form id="rentCarForm" action="/actions/process-rental.php" method="POST" class="needs-validation" novalidate>
+                        <input type="hidden" name="car_id" value="<?= htmlspecialchars($car['id']) ?>">
+                        
+                        <!-- Auto Details -->
+                        <div class="form-section">
+                            <h2><i class="bi bi-car-front"></i> Auto Details</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="<?= htmlspecialchars($car['image_url']) ?>" alt="<?= htmlspecialchars($car['brand'] . ' ' . $car['model']) ?>" class="img-fluid rounded mb-3">
+                                </div>
+                                <div class="col-md-6">
+                                    <h3><?= htmlspecialchars($car['brand'] . ' ' . $car['model']) ?></h3>
+                                    <p class="text-muted"><?= htmlspecialchars($car['description']) ?></p>
+                                    <div class="car-specs">
+                                        <p><strong>Categorie:</strong> <?= htmlspecialchars($car['category']) ?></p>
+                                        <p><strong>Transmissie:</strong> <?= htmlspecialchars($car['transmission']) ?></p>
+                                        <p><strong>Brandstof:</strong> <?= htmlspecialchars($car['fuel_capacity']) ?></p>
+                                        <p><strong>Capaciteit:</strong> <?= htmlspecialchars($car['capacity']) ?> personen</p>
+                                    </div>
+                                    <p class="price"><strong>Prijs per dag:</strong> €<?= number_format($car['price'], 2, ',', '.') ?></p>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Persoonlijke Gegevens -->
                         <div class="form-section">
                             <h2><i class="bi bi-person-circle"></i> Persoonlijke Gegevens</h2>
@@ -93,32 +139,32 @@ require_once __DIR__ . '/../config/database.php';
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="pickupDate" class="form-label">Ophaaldatum</label>
-                                    <input type="datetime-local" class="form-control" id="pickupDate" required>
+                                    <input type="datetime-local" class="form-control" id="pickupDate" name="pickup_date" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="returnDate" class="form-label">Retourdatum</label>
-                                    <input type="datetime-local" class="form-control" id="returnDate" required>
+                                    <input type="datetime-local" class="form-control" id="returnDate" name="return_date" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="pickupLocation" class="form-label">Ophaallocatie</label>
-                                    <select class="form-select" id="pickupLocation" required>
+                                    <select class="form-select" id="pickupLocation" name="pickup_location" required>
                                         <option value="">Selecteer locatie</option>
-                                        <option value="amsterdam">Amsterdam Centraal</option>
-                                        <option value="rotterdam">Rotterdam Centraal</option>
-                                        <option value="denhaag">Den Haag Centraal</option>
-                                        <option value="utrecht">Utrecht Centraal</option>
+                                        <option value="Amsterdam Centraal">Amsterdam Centraal</option>
+                                        <option value="Rotterdam Centraal">Rotterdam Centraal</option>
+                                        <option value="Den Haag Centraal">Den Haag Centraal</option>
+                                        <option value="Utrecht Centraal">Utrecht Centraal</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="returnLocation" class="form-label">Retourlocatie</label>
-                                    <select class="form-select" id="returnLocation" required>
+                                    <select class="form-select" id="returnLocation" name="return_location" required>
                                         <option value="">Selecteer locatie</option>
-                                        <option value="amsterdam">Amsterdam Centraal</option>
-                                        <option value="rotterdam">Rotterdam Centraal</option>
-                                        <option value="denhaag">Den Haag Centraal</option>
-                                        <option value="utrecht">Utrecht Centraal</option>
+                                        <option value="Amsterdam Centraal">Amsterdam Centraal</option>
+                                        <option value="Rotterdam Centraal">Rotterdam Centraal</option>
+                                        <option value="Den Haag Centraal">Den Haag Centraal</option>
+                                        <option value="Utrecht Centraal">Utrecht Centraal</option>
                                     </select>
                                 </div>
                             </div>
@@ -198,8 +244,8 @@ require_once __DIR__ . '/../config/database.php';
                                     <div class="col-12 mb-3">
                                         <p class="text-muted">U wordt doorgestuurd naar PayPal om uw betaling te voltooien.</p>
                                     </div>
-                </div>
-            </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Extra's -->
@@ -222,8 +268,6 @@ require_once __DIR__ . '/../config/database.php';
                                         </label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="gps">
@@ -270,7 +314,7 @@ require_once __DIR__ . '/../config/database.php';
 
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-primary btn-lg">
-                                <i class="bi bi-check2-circle"></i> Reservering Bevestigen
+                                <i class="bi bi-check-circle"></i> Bevestig Verhuur
                             </button>
                         </div>
                     </form>

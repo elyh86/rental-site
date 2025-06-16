@@ -34,11 +34,3 @@ CREATE TABLE IF NOT EXISTS rentals (
     FOREIGN KEY (car_id) REFERENCES cars(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
--- Voeg wat voorbeeld auto's toe
-INSERT INTO cars (brand, model, year, price, image_url, category, transmission, fuel_capacity, capacity, type) VALUES
-('Toyota', 'Corolla', 2022, 45.00, '/assets/images/cars/toyota-corolla.jpg', 'Sedan', 'Automatisch', '1.6L', 5, 'regular'),
-('Volkswagen', 'Golf', 2021, 50.00, '/assets/images/cars/vw-golf.jpg', 'Hatchback', 'Handmatig', '1.4L', 5, 'regular'),
-('BMW', '3 Series', 2023, 75.00, '/assets/images/cars/bmw-3.jpg', 'Luxe', 'Automatisch', '2.0L', 5, 'regular'),
-('Mercedes', 'C-Class', 2022, 80.00, '/assets/images/cars/mercedes-c.jpg', 'Luxe', 'Automatisch', '2.0L', 5, 'regular'),
-('Ford', 'Transit', 2021, 65.00, '/assets/images/cars/ford-transit.jpg', 'Transport', 'Handmatig', '2.0L', 3, 'transport'); 

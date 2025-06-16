@@ -11,6 +11,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 try {
+    // Debug informatie
+    echo "<!-- Debug: User ID = " . $_SESSION['user_id'] . " -->";
+    
     // Haal alle verhuringen van de gebruiker op
     $stmt = $conn->prepare("
         SELECT r.*, c.brand, c.model, c.image_url 
@@ -32,6 +35,12 @@ try {
     
     $result = $stmt->get_result();
     $rentals = $result->fetch_all(MYSQLI_ASSOC);
+    
+    // Debug informatie
+    echo "<!-- Debug: Aantal gevonden verhuringen = " . count($rentals) . " -->";
+    if (count($rentals) > 0) {
+        echo "<!-- Debug: Eerste verhuring = " . print_r($rentals[0], true) . " -->";
+    }
     
 } catch (Exception $e) {
     $error = "Er is een fout opgetreden bij het ophalen van uw verhuringen: " . $e->getMessage();
@@ -96,22 +105,22 @@ try {
                                             <i class="bi bi-calendar-check"></i>
                                             <div>
                                                 <strong>Ophaaldatum:</strong>
-                                                <p><?= date('d-m-Y H:i', strtotime($rental['pickup_date'])) ?></p>
+                                                <p><?= isset($rental['pickup_date']) ? date('d-m-Y H:i', strtotime($rental['pickup_date'])) : 'Niet beschikbaar' ?></p>
                                             </div>
                                         </div>
                                         <div class="info-item">
                                             <i class="bi bi-calendar-x"></i>
                                             <div>
                                                 <strong>Retourdatum:</strong>
-                                                <p><?= date('d-m-Y H:i', strtotime($rental['return_date'])) ?></p>
+                                                <p><?= isset($rental['return_date']) ? date('d-m-Y H:i', strtotime($rental['return_date'])) : 'Niet beschikbaar' ?></p>
                                             </div>
                                         </div>
                                         <div class="info-item">
                                             <i class="bi bi-geo-alt"></i>
                                             <div>
                                                 <strong>Locaties:</strong>
-                                                <p>Ophalen: <?= htmlspecialchars($rental['pickup_location']) ?></p>
-                                                <p>Retour: <?= htmlspecialchars($rental['return_location']) ?></p>
+                                                <p>Ophalen: <?= isset($rental['pickup_location']) ? htmlspecialchars($rental['pickup_location']) : 'Niet beschikbaar' ?></p>
+                                                <p>Retour: <?= isset($rental['return_location']) ? htmlspecialchars($rental['return_location']) : 'Niet beschikbaar' ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -119,30 +128,30 @@ try {
                                     <div class="extras">
                                         <h4>Extra's:</h4>
                                         <ul>
-                                            <?php if ($rental['extra_insurance']): ?>
+                                            <?php if (isset($rental['extra_insurance']) && $rental['extra_insurance']): ?>
                                                 <li><i class="bi bi-check-circle"></i> Extra verzekering</li>
                                             <?php endif; ?>
-                                            <?php if ($rental['child_seat']): ?>
+                                            <?php if (isset($rental['child_seat']) && $rental['child_seat']): ?>
                                                 <li><i class="bi bi-check-circle"></i> Kinderzitje</li>
                                             <?php endif; ?>
-                                            <?php if ($rental['gps']): ?>
+                                            <?php if (isset($rental['gps']) && $rental['gps']): ?>
                                                 <li><i class="bi bi-check-circle"></i> GPS navigatie</li>
                                             <?php endif; ?>
-                                            <?php if ($rental['winter_tires']): ?>
+                                            <?php if (isset($rental['winter_tires']) && $rental['winter_tires']): ?>
                                                 <li><i class="bi bi-check-circle"></i> Winterbanden</li>
                                             <?php endif; ?>
                                         </ul>
                                     </div>
 
                                     <div class="rental-status">
-                                        <span class="badge bg-<?= $rental['status'] === 'confirmed' ? 'success' : ($rental['status'] === 'pending' ? 'warning' : 'secondary') ?>">
-                                            <?= ucfirst($rental['status']) ?>
+                                        <span class="badge bg-<?= isset($rental['status']) ? ($rental['status'] === 'confirmed' ? 'success' : ($rental['status'] === 'pending' ? 'warning' : 'secondary')) : 'secondary' ?>">
+                                            <?= isset($rental['status']) ? ucfirst($rental['status']) : 'Onbekend' ?>
                                         </span>
                                     </div>
 
                                     <div class="rental-price">
                                         <h4>Totaalprijs:</h4>
-                                        <p class="price">€<?= number_format($rental['total_price'], 2, ',', '.') ?></p>
+                                        <p class="price">€<?= isset($rental['total_price']) ? number_format($rental['total_price'], 2, ',', '.') : '0,00' ?></p>
                                     </div>
                                 </div>
                             </div>

@@ -99,57 +99,41 @@ if ($car) {
     </div>
 
     <?php if ($car): // Only show review section if car exists ?>
-    <section id="reviews" class="reviews-section">
-        <h2>Klantenrecensies</h2>
-
-        <?php if (isset($reviewError)): ?>
-            <p class="error-message"><?= htmlspecialchars($reviewError) ?></p>
-        <?php endif; ?>
-
-        <div class="review-form-container white-background">
-            <h3>Laat een recensie achter</h3>
-            <form action="/car-detail?id=<?= $car['id'] ?>" method="POST" class="review-form">
-                <div class="form-group">
-                    <label for="user_name">Naam:</label>
-                    <input type="text" id="user_name" name="user_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="rating">Beoordeling:</label>
-                    <div class="star-rating">
-                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 sterren">★</label>
-                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 sterren">★</label>
-                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 sterren">★</label>
-                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 sterren">★</label>
-                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 ster">★</label>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mb-4">Wat onze klanten zeggen</h3>
+                <?php if (empty($reviews)): ?>
+                    <div class="empty-reviews">
+                        <i class="bi bi-chat-square-text"></i>
+                        <p>Nog geen reviews voor deze auto.</p>
+                        <p class="text-muted">Wees de eerste om een review te schrijven!</p>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="comment">Reactie:</label>
-                    <textarea id="comment" name="comment" rows="5" required></textarea>
-                </div>
-                <button type="submit" name="submit_review" class="button-primary">Recensie plaatsen</button>
-            </form>
-        </div>
-
-        <div class="existing-reviews">
-            <?php if (!empty($reviews)): ?>
-                <?php foreach ($reviews as $review): ?>
-                    <div class="review-card white-background">
-                        <div class="review-header">
-                            <span class="reviewer-name"><?= htmlspecialchars($review['user_name']) ?></span>
-                            <span class="review-date"><?= date('d M Y', strtotime($review['created_at'])) ?></span>
-                        </div>
-                        <div class="review-rating">
-                            <span class="stars stars-<?= htmlspecialchars($review['rating']) ?>"></span>
-                        </div>
-                        <p class="review-comment"><?= nl2br(htmlspecialchars($review['comment'])) ?></p>
+                <?php else: ?>
+                    <div class="reviews-grid">
+                        <?php foreach ($reviews as $review): ?>
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <h4><?= htmlspecialchars($review['user_name']) ?></h4>
+                                        <div class="rating">
+                                            <span class="stars stars-<?= $review['rating'] ?>"></span>
+                                            <span class="rating-text"><?= $review['rating'] ?>/5</span>
+                                        </div>
+                                    </div>
+                                    <div class="review-date">
+                                        <i class="bi bi-calendar3"></i>
+                                        <?= date('d-m-Y', strtotime($review['created_at'])) ?>
+                                    </div>
+                                </div>
+                                <p class="review-comment"><?= htmlspecialchars($review['comment']) ?></p>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="no-reviews">Nog geen recensies voor deze auto.</p>
-            <?php endif; ?>
+                <?php endif; ?>
+            </div>
         </div>
-    </section>
+    </div>
     <?php endif; ?>
 </main>
 
