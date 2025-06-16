@@ -9,7 +9,7 @@
             <h3>Over ons</h3>
             <ul>
                 <li><a href="/over-ons">Het team</a></li>
-                <li><a href="#">Onze visie</a></li>
+                <li><a href="/our-vision">Onze visie</a></li>
                 <li><a href="#">Vacatures</a></li>
             </ul>
         </div>

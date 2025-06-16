@@ -33,6 +33,11 @@ if ($path === 'our-offer') {
     exit;
 }
 
+if ($path === 'our-vision') {
+    require_once __DIR__ . '/pages/our-vision.php';
+    exit;
+}
+
 if ($path === 'login-handler') {
     require_once __DIR__ . '/actions/login.php';
     exit;

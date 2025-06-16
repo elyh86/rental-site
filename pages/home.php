@@ -17,14 +17,14 @@ $transportCar = $stmtTransport->fetch(PDO::FETCH_ASSOC);
             <div class="advertorial">
                 <h2>Hét platform om een auto te huren</h2>
                 <p>Snel en eenvoudig een auto huren. Natuurlijk voor een lage prijs.</p>
-                <a href="/ons-aanbod" class="button-primary">Huur nu een auto</a>
+                <a href="/rent-car" class="button-primary">Huur nu een auto</a>
                 <img src="assets/images/car-rent-header-image-1.png" alt="">
                 <img src="assets/images/header-circle-background.svg" alt="" class="background-header-element">
             </div>
             <div class="advertorial" style="position: relative; overflow: hidden;">
                 <h2>Wij verhuren ook bedrijfswagens</h2>
                 <p>Voor een vaste lage prijs met prettig voordelen.</p>
-                <a href="/ons-aanbod" class="button-primary">Huur een bedrijfswagen</a>
+                <a href="/rent-car" class="button-primary">Huur een bedrijfswagen</a>
                 <img src="assets/images/header-block-background.svg" alt="" class="background-header-element">
                 <img src="assets/images/waggiebedrijf.png" alt="Bedrijfswagen">
             </div>
@@ -54,7 +54,7 @@ $transportCar = $stmtTransport->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="rent-details">
                     <span><span class="font-weight-bold">€<?= number_format($car['price'], 2, ',', '.') ?></span> / dag</span>
-                    <a href="/car-detail?id=<?= $car['id'] ?>" class="button-primary">Bekijk nu</a>
+                    <a href="/rent-car" class="button-primary">Bekijk nu</a>
                 </div>
             </div>
         <?php endfor; ?>
@@ -81,7 +81,7 @@ $transportCar = $stmtTransport->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="rent-details">
                     <span><span class="font-weight-bold">€<?= number_format($car['price'], 2, ',', '.') ?></span> / dag</span>
-                    <a href="/car-detail?id=<?= $car['id'] ?>" class="button-primary">Bekijk nu</a>
+                    <a href="/rent-car" class="button-primary">Bekijk nu</a>
                 </div>
             </div>
         <?php endfor; ?>
