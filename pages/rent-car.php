@@ -128,35 +128,78 @@ require_once __DIR__ . '/../config/database.php';
                         <div class="form-section">
                             <h2><i class="bi bi-credit-card"></i> Betalingsgegevens</h2>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="cardNumber" class="form-label">Kaartnummer</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="cardNumber" required>
-                                        <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+                                <div class="col-12 mb-4">
+                                    <label class="form-label">Betaalmethode</label>
+                                    <div class="payment-methods">
+                                        <div class="payment-method">
+                                            <input type="radio" name="payment_method" id="creditCard" value="credit_card" required>
+                                            <label for="creditCard">
+                                                <i class="bi bi-credit-card"></i>
+                                                Credit Card
+                                            </label>
+                                        </div>
+                                        <div class="payment-method">
+                                            <input type="radio" name="payment_method" id="ideal" value="ideal" required>
+                                            <label for="ideal">
+                                                <i class="bi bi-bank"></i>
+                                                iDEAL
+                                            </label>
+                                        </div>
+                                        <div class="payment-method">
+                                            <input type="radio" name="payment_method" id="paypal" value="paypal" required>
+                                            <label for="paypal">
+                                                <i class="bi bi-paypal"></i>
+                                                PayPal
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="expiryDate" class="form-label">Vervaldatum</label>
-                                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/JJ" required>
+                            </div>
+
+                            <!-- Credit Card velden (initieel verborgen) -->
+                            <div id="creditCardFields" class="payment-fields" style="display: none;">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="cardNumber" class="form-label">Kaartnummer</label>
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456">
+                                    </div>
                                 </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="cvv" class="form-label">CVV</label>
-                                    <input type="text" class="form-control" id="cvv" required>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="expiryDate" class="form-label">Vervaldatum</label>
+                                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cvv" class="form-label">CVV</label>
+                                        <input type="text" class="form-control" id="cvv" placeholder="123">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="cardName" class="form-label">Naam op kaart</label>
-                                    <input type="text" class="form-control" id="cardName" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="billingAddress" class="form-label">Factuuradres</label>
-                                    <select class="form-select" id="billingAddress" required>
-                                        <option value="same">Zelfde als bezorgadres</option>
-                                        <option value="different">Ander adres</option>
-                                    </select>
+
+                            <!-- iDEAL velden (initieel verborgen) -->
+                            <div id="idealFields" class="payment-fields" style="display: none;">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="bankSelect" class="form-label">Kies uw bank</label>
+                                        <select class="form-select" id="bankSelect">
+                                            <option value="">Selecteer uw bank</option>
+                                            <option value="INGBNL2A">ING Bank</option>
+                                            <option value="RABONL2U">Rabobank</option>
+                                            <option value="ABNANL2A">ABN AMRO</option>
+                                            <option value="SNSBNL2A">SNS Bank</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- PayPal velden (initieel verborgen) -->
+                            <div id="paypalFields" class="payment-fields" style="display: none;">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <p class="text-muted">U wordt doorgestuurd naar PayPal om uw betaling te voltooien.</p>
+                                    </div>
+                </div>
+            </div>
                         </div>
 
                         <!-- Extra's -->
@@ -235,6 +278,22 @@ require_once __DIR__ . '/../config/database.php';
             </div>
         </div>
     </div>
+
+    <script>
+        // Toon/verberg betaalvelden op basis van geselecteerde betaalmethode
+        document.querySelectorAll('input[name="payment_method"]').forEach(input => {
+            input.addEventListener('change', function() {
+                // Verberg alle betaalvelden
+                document.querySelectorAll('.payment-fields').forEach(field => {
+                    field.style.display = 'none';
+                });
+                
+                // Toon de geselecteerde betaalvelden
+                const selectedMethod = this.value;
+                document.getElementById(selectedMethod + 'Fields').style.display = 'block';
+            });
+        });
+    </script>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

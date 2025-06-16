@@ -1,0 +1,160 @@
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin: 2rem 0;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.empty-state h2 {
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.rentals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.rental-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.rental-card:hover {
+    transform: translateY(-5px);
+}
+
+.car-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rental-details {
+    padding: 1.5rem;
+}
+
+.rental-details h3 {
+    color: #343a40;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.rental-info {
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info-item i {
+    color: #007bff;
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.info-item strong {
+    color: #495057;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.info-item p {
+    color: #6c757d;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.extras {
+    margin-bottom: 1.5rem;
+}
+
+.extras h4 {
+    color: #495057;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.extras ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.extras li {
+    color: #6c757d;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.extras li i {
+    color: #28a745;
+}
+
+.rental-status {
+    margin-bottom: 1rem;
+}
+
+.rental-status .badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.rental-price {
+    border-top: 1px solid #dee2e6;
+    padding-top: 1rem;
+}
+
+.rental-price h4 {
+    color: #495057;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.rental-price .price {
+    color: #28a745;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .rentals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rental-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+} 

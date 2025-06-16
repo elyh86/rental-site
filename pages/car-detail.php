@@ -90,7 +90,7 @@ if ($car) {
                     <div class="row"><span class="font-weight-bold">€<?= number_format($car['price'], 2, ',', '.') ?></span> / dag</div>
                     <div class="row">
                         <span class="availability available" style="margin-right: 10px;">Beschikbaar</span>
-                        <a href="#" class="button-primary" data-huur-auto-id="<?= $car['id'] ?>">Huur nu</a>
+                        <a href="/rent-car?id=<?= $car['id'] ?>" class="button-primary">Huur nu</a>
                     </div>
                 </div>
             </div>
