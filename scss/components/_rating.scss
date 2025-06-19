@@ -1,0 +1,21 @@
+.rating{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.stars {
+  font-size: 1.5rem;
+  color: #e5e7eb;
+  font-family: sans-serif;
+}
+
+.stars::before {
+  content: '★★★★★';
+}
+
+.stars.stars-1::before { content: '★☆☆☆☆'; color: #facc15; }
+.stars.stars-2::before { content: '★★☆☆☆'; color: #facc15; }
+.stars.stars-3::before { content: '★★★☆☆'; color: #facc15; }
+.stars.stars-4::before { content: '★★★★☆'; color: #facc15; }
+.stars.stars-5::before { content: '★★★★★'; color: #facc15; }
