@@ -1,0 +1,23 @@
+.car-detail{
+
+  .grid{
+    gap: 50px;
+    .car-type .row{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .call-to-action{
+    display: flex;
+    padding-top: 5em;
+    .row{
+      justify-content: left !important;
+      align-items: center;
+    }
+  }
+  .call-to-action .row:last-of-type{
+    display: flex;
+    justify-content: flex-end !important;
+  }
+}

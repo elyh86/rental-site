@@ -1,0 +1,36 @@
+body{
+  background-color: #F6F7F9;
+  margin: 0;
+}
+
+.grid{
+  display: flex;
+  justify-content: space-between;
+  .row{
+    flex: 1;
+  }
+}
+
+
+.content{
+  //max-width: $breakpoint-lg;
+  margin: 0 auto;
+}
+
+main{
+  padding: 1em 4em;
+}
+
+.font-weight-bold{
+  font-weight: bold;
+}
+
+.white-background{
+  background-color: white;
+  padding: 1em 2em;
+  border-radius: 10px;
+}
+
+.accent-color{
+  color: #90A3BF;
+}

@@ -1,0 +1,22 @@
+.account-form{
+  margin: 0 auto;
+  padding: 2em;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  input{
+    background-color: #F6F7F9;
+    border: none;
+    margin-bottom: 24px;
+    padding: 1em 2em;
+    border-radius: 10px;
+  }
+  label{
+    margin-bottom: 1em;
+  }
+
+  //input[type=submit]{
+  //  max-width: fit-content;
+  //}
+}
