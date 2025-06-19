@@ -1,0 +1,136 @@
+/* Dropdown Menu Styling voor Navigatie */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-toggle i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-container:hover .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.dropdown-container:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-dropdown ul li {
+    display: block;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.nav-dropdown ul li a:hover {
+    background-color: #f5f7fa;
+    color: #3563E9;
+}
+
+.nav-dropdown ul li a i {
+    color: #3563E9;
+    width: 18px;
+    text-align: center;
+}
+
+/* Styling voor het account dropdown menu ook verbeteren */
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.account:hover .account-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.account-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.account-dropdown ul li {
+    display: block;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.account-dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.account-dropdown ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.account-dropdown ul li a:hover {
+    background-color: #f5f7fa;
+    color: #3563E9;
+}
+
+.account-dropdown ul li img {
+    width: 18px;
+    height: 18px;
+}
