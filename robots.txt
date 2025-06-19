@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://localhost/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /database/
+Disallow: /actions/
+Disallow: /includes/
+Disallow: /scss/
+Disallow: /webalizer/
+Disallow: /xampp/
+
+# Allow important pages
+Allow: /ons-aanbod
+Allow: /over-ons
+Allow: /onze-visie
+Allow: /events
+Allow: /podcast
+Allow: /vacatures
+Allow: /hulp
+Allow: /login-form
+Allow: /register-form 

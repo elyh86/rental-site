@@ -1,0 +1,279 @@
+/* Hulp Page Styles */
+.hulp-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Header Banner */
+.header-banner {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5));
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: white;
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Content Container */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 80px;
+}
+
+.section-header {
+    margin-bottom: 30px;
+}
+
+.section-header.centered {
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.section-header.centered .section-title:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #3563E9;
+    border-radius: 3px;
+}
+
+.intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* FAQ Section */
+.faq-list {
+    margin-top: 30px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.toggle-icon {
+    font-size: 24px;
+    color: #3563E9;
+    font-weight: bold;
+}
+
+.faq-answer {
+    padding: 20px;
+    display: none;
+    border-top: 1px solid #eaeaea;
+}
+
+.faq-answer p {
+    margin-top: 0;
+}
+
+.faq-answer ul, .faq-answer ol {
+    padding-left: 20px;
+}
+
+.faq-answer li {
+    margin-bottom: 10px;
+}
+
+/* Roadside Section */
+.roadside-info {
+    margin-top: 30px;
+}
+
+.roadside-info ol {
+    padding-left: 20px;
+}
+
+.roadside-info li {
+    margin-bottom: 15px;
+}
+
+.emergency-card {
+    background-color: #feeceb;
+    border-left: 4px solid #e53935;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.emergency-card h3 {
+    color: #e53935;
+    margin-top: 0;
+}
+
+.emergency-number {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.emergency-number a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e53935;
+    text-decoration: none;
+}
+
+/* Terms Section */
+.terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.term-item {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.term-item h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #3563E9;
+}
+
+.term-item ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.term-item li {
+    margin-bottom: 10px;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-info h3, .contact-form-container h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    margin-bottom: 15px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+    border-color: #3563E9;
+    outline: none;
+}
+
+.contact-form .button-primary {
+    width: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .terms-grid {
+        grid-template-columns: 1fr;
+    }
+}

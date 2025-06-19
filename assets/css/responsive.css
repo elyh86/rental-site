@@ -1,0 +1,782 @@
+/* Responsive Styles voor Rydr Website
+ * Professionele aanpassingen voor alle apparaten:
+ * - Desktop (>1200px)
+ * - Laptop (992px-1200px)
+ * - Tablet (768px-992px)
+ * - Mobiel (<768px)
+ * - iPhone Pro Max 15 (430px)
+ */
+
+/* =====================
+   ALGEMENE RESPONSIEVE REGELS
+   ===================== */
+
+/* Alle apparaten */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    overflow-x: hidden; /* Voorkom horizontaal scrollen */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* =====================
+   LAPTOP & KLEINE DESKTOP
+   ===================== */
+@media (max-width: 1200px) {
+    /* Algemene layout aanpassingen */
+    .content {
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+    
+    main {
+        padding: 1.5em;
+    }
+    
+    /* Topbar layout */
+    .topbar {
+        padding: 15px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    
+    .topbar nav ul {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+    /* Aanbod pagina layout */
+    .aanbod-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .filters-sidebar {
+        flex: 0 0 250px;
+    }
+    
+    .car-listings {
+        flex: 1;
+    }
+    
+    .car-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    /* Homepage advertorials */
+    .advertorials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    
+    .advertorial {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 300px;
+        position: relative;
+        overflow: hidden;
+        height: 350px;
+        padding: 30px;
+        border-radius: 10px;
+    }
+    
+    .advertorial h2 {
+        position: relative;
+        z-index: 2;
+        font-size: 1.8rem;
+        max-width: 70%;
+    }
+    
+    .advertorial p {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 20px;
+        max-width: 70%;
+    }
+    
+    .advertorial .button-primary {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .advertorial img {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        max-width: 60%;
+        max-height: 70%;
+        object-fit: contain;
+    }
+    
+    .advertorial .background-header-element {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    
+    /* Specifiek voor tweede advertorial (bedrijfswagen) */
+    .advertorial:nth-child(2) img:first-of-type {
+        max-width: 60%;
+        max-height: 75%;
+        margin-top: 10px;
+        right: 10px;
+        bottom: 0;
+    }
+    
+    /* Auto detail pagina */
+    .car-detail-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* =====================
+   TABLET
+   ===================== */
+@media (max-width: 992px) {
+    /* Algemene layout */
+    .content {
+        padding: 0 15px;
+        max-width: 960px;
+    }
+    
+    /* Topbar layout */
+    .topbar {
+        flex-wrap: wrap;
+    }
+    
+    .topbar form {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .logo {
+        flex: 1;
+    }
+    
+    .menu {
+        flex: 0 0 auto;
+    }
+    
+    /* Aanbod pagina */
+    .aanbod-container {
+        flex-direction: column;
+    }
+    
+    .filters-sidebar {
+        width: 100%;
+        flex: none;
+        margin-bottom: 20px;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .filter-section {
+        margin-bottom: 20px;
+    }
+    
+    .filter-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .filter-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    
+    .filter-actions .button-primary,
+    .filter-actions .button-secondary {
+        flex: 1;
+        min-width: 45%;
+        margin: 0;
+    }
+    
+    .car-listings {
+        width: 100%;
+    }
+    
+    /* Footer aanpassingen */
+    footer {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+        padding: 40px 20px;
+    }
+    
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .legal-footer {
+        flex-direction: row;
+        padding: 15px 20px;
+    }
+    
+    /* Advertorials op tablet */
+    .advertorials {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .advertorial {
+        flex: 0 0 100%;
+        margin-bottom: 15px;
+        height: 300px;
+    }
+    
+    .advertorial h2 {
+        font-size: 1.6rem;
+        max-width: 60%;
+    }
+    
+    .advertorial p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        max-width: 60%;
+    }
+    
+    .advertorial img {
+        max-width: 50%;
+        max-height: 65%;
+        right: 10px;
+    }
+    
+    .advertorial:nth-child(2) img:first-of-type {
+        max-width: 55%;
+        max-height: 65%;
+        right: 15px;
+    }
+    
+    /* Auto detail pagina */
+    .car-detail-container {
+        flex-direction: column;
+    }
+    
+    .car-detail-left, .car-detail-right {
+        width: 100%;
+    }
+    
+    /* Content pagina's */
+    .page-container {
+        padding: 0;
+    }
+    
+    .banner-section {
+        padding: 60px 20px;
+    }
+    
+    .content-container {
+        padding: 40px 20px;
+    }
+}
+
+/* =====================
+   MOBIEL
+   ===================== */
+@media (max-width: 768px) {
+    /* Algemene layout */
+    .content {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    main {
+        padding: 1em 0.5em;
+    }
+    
+    /* Topbar en navigatie */
+    .topbar {
+        padding: 10px;
+    }
+    
+    .topbar nav {
+        width: 100%;
+        order: 2;
+        margin: 10px 0;
+    }
+    
+    .topbar nav ul {
+        justify-content: space-around;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .topbar nav ul li {
+        margin: 0 5px;
+    }
+    
+    .topbar nav ul li a {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+    
+    /* Filter sidebar verbetering */
+    .filters-sidebar {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .filter-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 8px;
+    }
+    
+    .filter-options {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .filter-option {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .filter-option input[type="checkbox"] {
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    
+    .filter-actions .button-primary,
+    .filter-actions .button-secondary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Advertorials op mobiel */
+    .advertorials {
+        gap: 12px;
+    }
+    
+    .advertorial {
+        height: 280px;
+        padding: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .advertorial h2 {
+        font-size: 1.4rem;
+        max-width: 60%;
+        margin-bottom: 8px;
+    }
+    
+    .advertorial p {
+        font-size: 0.9rem;
+        max-width: 60%;
+        margin-bottom: 12px;
+    }
+    
+    .advertorial .button-primary {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .advertorial img {
+        max-width: 45%;
+        max-height: 60%;
+        right: 5px;
+        bottom: 5px;
+    }
+    
+    /* Car cards */
+    .car-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .car-card {
+        margin-bottom: 15px;
+    }
+    
+    /* Footer verbetering */
+    footer {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 15px;
+        gap: 25px;
+    }
+    
+    .brand {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .brand h2 {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .links h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .links ul li {
+        margin-bottom: 8px;
+    }
+    
+    .links ul li a {
+        font-size: 0.9rem;
+    }
+    
+    .legal-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .legal-links ul {
+        justify-content: center;
+        padding: 0;
+        margin-top: 10px;
+    }
+    
+    /* Knoppen en formulieren */
+    .button-primary, .button-secondary {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    form input, form select, form textarea {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    /* Content pagina's */
+    .banner-content h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Event en Blog pagina's */
+    .events-grid, .articles-grid, .podcast-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Visie pagina */
+    .vision-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Timeline */
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item, .timeline-item:nth-child(odd) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 60px;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-date, .timeline-item:nth-child(odd) .timeline-date {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-content {
+        width: 100%;
+    }
+}
+
+/* =====================
+   IPHONE PRO MAX 15 SPECIFIEK
+   ===================== */
+@media (max-width: 430px) {
+    /* Algemene layout */
+    body {
+        font-size: 14px;
+    }
+    
+    .logo a {
+        font-size: 1.4rem;
+    }
+    
+    /* Navigatie */
+    .topbar nav ul li a {
+        font-size: 0.85rem;
+        padding: 5px;
+    }
+    
+    /* Advertorials iPhone Pro Max 15 specifiek */
+    .advertorials {
+        gap: 10px;
+    }
+    
+    .advertorial {
+        height: 250px;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    
+    .advertorial h2 {
+        font-size: 1.2rem;
+        max-width: 58%;
+        margin-bottom: 6px;
+    }
+    
+    .advertorial p {
+        font-size: 0.85rem;
+        max-width: 58%;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    .advertorial .button-primary {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .advertorial img {
+        max-width: 45%;
+        max-height: 55%;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .advertorial:nth-child(2) img:first-of-type {
+        max-width: 50%;
+        max-height: 60%;
+        right: 5px;
+        bottom: 0;
+    }
+    
+    /* Filter sidebar specifieke verbeteringen */
+    .filters-sidebar {
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+    }
+    
+    .filter-section h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+    }
+    
+    .filter-options {
+        margin-bottom: 8px;
+    }
+    
+    .filter-option {
+        padding: 6px 0;
+    }
+    
+    .filter-option input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        border-radius: 4px;
+    }
+    
+    .filter-option label {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    
+    .filter-actions {
+        margin-top: 12px;
+    }
+    
+    .filter-actions .button-primary {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .filter-actions .button-secondary {
+        padding: 8px;
+        font-size: 0.85rem;
+        margin-top: 8px;
+    }
+    
+    /* Footer specifieke verbeteringen */
+    footer {
+        padding: 25px 12px;
+        gap: 20px;
+    }
+    
+    .brand h2 {
+        font-size: 1.6rem;
+    }
+    
+    .brand p {
+        font-size: 0.85rem;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .links {
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .links:last-child {
+        border-bottom: none;
+    }
+    
+    .links h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .links ul li {
+        margin-bottom: 6px;
+    }
+    
+    .links ul li a {
+        font-size: 0.85rem;
+    }
+    
+    .legal-footer {
+        padding: 12px;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+    }
+    
+    .legal-links ul li a {
+        font-size: 0.8rem;
+        padding: 0 6px;
+    }
+    
+    /* Auto cards */
+    .car-card {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    .car-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .car-specs {
+        flex-wrap: wrap;
+    }
+    
+    .spec-item {
+        flex: 0 0 50%;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .price .amount {
+        font-size: 1.2rem;
+    }
+    
+    .rent-now-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    /* Content pagina's */
+    .banner-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .banner-content p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    /* Podcast en evenementen */
+    .event-card, .article-card, .podcast-card {
+        border-radius: 8px;
+    }
+    
+    .event-date {
+        top: 5px;
+        right: 5px;
+        padding: 6px;
+        min-width: 50px;
+    }
+    
+    .event-date .day {
+        font-size: 16px;
+    }
+    
+    .event-date .month {
+        font-size: 11px;
+    }
+    
+    .episode-item {
+        flex-direction: column;
+    }
+    
+    .episode-number {
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .episode-content h3 {
+        font-size: 1.1rem;
+    }
+}
